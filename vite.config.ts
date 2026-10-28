@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: './', // Soporta despliegue en subcarpetas de GitHub Pages
+  base: '/splendid-meitner/',
   plugins: [
     tailwindcss(),
     react(),

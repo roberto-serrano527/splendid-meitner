@@ -2,14 +2,14 @@
   "name": "LexiCards - Flashcards de Vocabulario & SRS",
   "short_name": "LexiCards",
   "description": "Aprende vocabulario con repetición espaciada (SM-2), audio nativo y colecciones compartidas.",
-  "start_url": "./",
+  "start_url": "/splendid-meitner/",
   "display": "standalone",
   "background_color": "#f8fafc",
   "theme_color": "#4f46e5",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "./icon.svg",
+      "src": "/splendid-meitner/icon.svg",
       "sizes": "192x192 512x512",
       "type": "image/svg+xml",
       "purpose": "any maskable"
