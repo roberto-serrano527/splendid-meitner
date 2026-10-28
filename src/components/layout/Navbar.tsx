@@ -1,9 +1,11 @@
-import { BookOpen, Sparkles, Download, Plus, Bot } from 'lucide-react';
+import { BookOpen, Sparkles, Download, Plus, Bot, BookA } from 'lucide-react';
 
 interface NavbarProps {
   onNewDeck: () => void;
   onImportClick: () => void;
   onAIPromptClick: () => void;
+  onVerbsClick: () => void;
+  isVerbsActive?: boolean;
   dueTodayCount: number;
 }
 
@@ -11,6 +13,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   onNewDeck,
   onImportClick,
   onAIPromptClick,
+  onVerbsClick,
+  isVerbsActive = false,
   dueTodayCount,
 }) => {
   return (
@@ -44,8 +48,21 @@ export const Navbar: React.FC<NavbarProps> = ({
           )}
 
           <button
+            onClick={onVerbsClick}
+            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-semibold rounded-lg transition-colors cursor-pointer border ${
+              isVerbsActive
+                ? 'bg-violet-600 text-white border-violet-600 shadow-xs'
+                : 'text-violet-700 bg-violet-50 hover:bg-violet-100 border-violet-200/80'
+            }`}
+            title="Aprender Verbos Irregulares y Reglas de Pronunciación"
+          >
+            <BookA className={`w-4 h-4 ${isVerbsActive ? 'text-white' : 'text-violet-600'}`} />
+            <span>Verbos</span>
+          </button>
+
+          <button
             onClick={onAIPromptClick}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-semibold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200/80 rounded-lg transition-colors cursor-pointer"
+            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-semibold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200/80 rounded-lg transition-colors cursor-pointer"
             title="Generar vocabulario con prompt para ChatGPT, Claude o Gemini"
           >
             <Bot className="w-4 h-4 text-indigo-600" />

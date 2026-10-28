@@ -17,6 +17,7 @@ import { FlashcardsSession } from './components/study/FlashcardsSession';
 import { QuizSession } from './components/study/QuizSession';
 import { SpellingSession } from './components/study/SpellingSession';
 import { StatsView } from './components/stats/StatsView';
+import { VerbsSection } from './components/verbs/VerbsSection';
 import {
   Sparkles,
   Download,
@@ -24,6 +25,7 @@ import {
   Layers,
   ArrowRight,
   Bot,
+  BookA,
 } from 'lucide-react';
 
 export function App() {
@@ -338,6 +340,11 @@ export function App() {
         }}
         onImportClick={() => setIsBulkImportOpen(true)}
         onAIPromptClick={() => setIsAIPromptOpen(true)}
+        onVerbsClick={() => {
+          setActiveDeckId(null);
+          setCurrentTab('verbs');
+        }}
+        isVerbsActive={!activeDeck && currentTab === 'verbs'}
       />
 
       {/* Main Container */}
@@ -385,6 +392,17 @@ export function App() {
               }`}
             >
               Colecciones ({decks.length})
+            </button>
+            <button
+              onClick={() => setCurrentTab('verbs')}
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                currentTab === 'verbs'
+                  ? 'bg-violet-600 text-white shadow-xs'
+                  : 'text-slate-600 hover:bg-slate-200/60'
+              }`}
+            >
+              <BookA className="w-3.5 h-3.5 text-violet-400" />
+              <span>Verbos Irregulares (154)</span>
             </button>
             <button
               onClick={() => setCurrentTab('today')}
@@ -444,6 +462,8 @@ export function App() {
               setActiveStudyMode('spelling');
             }}
           />
+        ) : currentTab === 'verbs' ? (
+          <VerbsSection onOpenDeck={(deckId) => setActiveDeckId(deckId)} />
         ) : currentTab === 'decks' ? (
           <div className="space-y-6">
             {/* Header banner */}

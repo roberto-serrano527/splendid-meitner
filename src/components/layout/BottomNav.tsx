@@ -1,7 +1,7 @@
 import React from 'react';
-import { Layers, Flame, BarChart3 } from 'lucide-react';
+import { Layers, Flame, BarChart3, BookA } from 'lucide-react';
 
-export type MainTab = 'decks' | 'today' | 'stats';
+export type MainTab = 'decks' | 'verbs' | 'today' | 'stats';
 
 interface BottomNavProps {
   currentTab: MainTab;
@@ -15,12 +15,12 @@ export const BottomNav: React.FC<BottomNavProps> = ({
   dueTodayCount,
 }) => {
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 py-1.5 px-4 sm:hidden">
+    <nav className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 py-1.5 px-2 sm:hidden">
       <div className="flex items-center justify-around max-w-md mx-auto">
         {/* Colecciones */}
         <button
           onClick={() => onSelectTab('decks')}
-          className={`flex flex-col items-center gap-1 py-1 px-3 rounded-xl transition-all cursor-pointer ${
+          className={`flex flex-col items-center gap-1 py-1 px-2.5 rounded-xl transition-all cursor-pointer ${
             currentTab === 'decks'
               ? 'text-indigo-600 font-semibold'
               : 'text-slate-500 hover:text-slate-800'
@@ -30,10 +30,23 @@ export const BottomNav: React.FC<BottomNavProps> = ({
           <span className="text-[11px]">Colecciones</span>
         </button>
 
+        {/* Verbos Irregulares */}
+        <button
+          onClick={() => onSelectTab('verbs')}
+          className={`flex flex-col items-center gap-1 py-1 px-2.5 rounded-xl transition-all cursor-pointer ${
+            currentTab === 'verbs'
+              ? 'text-violet-600 font-semibold'
+              : 'text-slate-500 hover:text-slate-800'
+          }`}
+        >
+          <BookA className={`w-5 h-5 ${currentTab === 'verbs' ? 'stroke-[2.5] text-violet-600' : 'stroke-2'}`} />
+          <span className="text-[11px]">Verbos</span>
+        </button>
+
         {/* Repaso Diario */}
         <button
           onClick={() => onSelectTab('today')}
-          className={`relative flex flex-col items-center gap-1 py-1 px-3 rounded-xl transition-all cursor-pointer ${
+          className={`relative flex flex-col items-center gap-1 py-1 px-2.5 rounded-xl transition-all cursor-pointer ${
             currentTab === 'today'
               ? 'text-indigo-600 font-semibold'
               : 'text-slate-500 hover:text-slate-800'
@@ -53,7 +66,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({
         {/* Progreso */}
         <button
           onClick={() => onSelectTab('stats')}
-          className={`flex flex-col items-center gap-1 py-1 px-3 rounded-xl transition-all cursor-pointer ${
+          className={`flex flex-col items-center gap-1 py-1 px-2.5 rounded-xl transition-all cursor-pointer ${
             currentTab === 'stats'
               ? 'text-indigo-600 font-semibold'
               : 'text-slate-500 hover:text-slate-800'
